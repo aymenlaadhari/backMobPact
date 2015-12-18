@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:commandButton  id="Editer" title="Modifier" icon="ui-icon-plus" value="Add new records" />
+            <p:dataTable var="p" value="#{globalController.participants}" >
+                <p:column headerText="Id">
+                    <h:outputText value="#{p.participantId}"/>
+                </p:column>
+
+                <p:column headerText="Name">
+                    <h:outputText value="#{p.name}" />
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText  value="#{p.email}"/>
+                </p:column>
+
+                <p:column headerText="Community">
+                    <h:outputText  value="#{p.community}"/>
+                </p:column>
+                <p:column style="width:4%" exportable="false">
+                    <p:commandButton  id="Editer" title="Modifier" icon="ui-icon-pencil" onclick="PF('dlgEdit').show();"/>
+                    <p:commandButton  id="Supprimer" title="Supprimer" icon="ui-icon-trash" onclick="PF('dlgDelet').show();" />
+
+                </p:column>
+            </p:dataTable>
+            <p:dialog header="Modal Dialog" widgetVar="dlgEdit" modal="true" height="100">
+                <h:outputText value="Edit." />
+            </p:dialog>  
+            <p:dialog header="Modal Dialog" widgetVar="dlgDelet" modal="true" height="100">
+                <h:outputText value="Delet." />
+            </p:dialog> 
+
+        </h:body>
+
+    </f:view>
+</html>
+
